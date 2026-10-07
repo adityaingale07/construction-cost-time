@@ -1,0 +1,19 @@
+{
+  "name": "construction-cost-time",
+  "version": "1.0.0",
+  "description": "BuildCost — Civil Engineering Construction Cost Estimator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "construction-cost",
+    "estimator",
+    "civil-engineering",
+    "boq",
+    "quantity-surveying"
+  ],
+  "author": "Aditya Ingale",
+  "license": "MIT"
+}
