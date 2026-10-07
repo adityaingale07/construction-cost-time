@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildCost — Civil Engineering Construction Cost Estimator</title>
+  <meta name="description" content="Professional Civil Engineering preliminary construction cost budgeting and Bill of Quantities (BOQ) estimator.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Top Orange Engineering Accent Line -->
+  <div class="top-accent-line"></div>
+
+  <!-- Sticky Engineering Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      
+      <!-- Brand Logo & Title -->
+      <div class="brand-group">
+        <a href="#home" class="brand-link">
+          <div class="brand-logo-box">
+            <!-- Truss / Construction Icon -->
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="4" fill="#0f172a"/>
+              <path d="M14 4L4 22H24L14 4Z" stroke="#f97316" stroke-width="2.4" stroke-linejoin="round"/>
+              <line x1="8" y1="15" x2="20" y2="15" stroke="#f97316" stroke-width="2"/>
+              <line x1="14" y1="4" x2="14" y2="22" stroke="#f97316" stroke-width="2"/>
+              <line x1="8" y1="15" x2="14" y2="22" stroke="#ffffff" stroke-width="1.6"/>
+              <line x1="20" y1="15" x2="14" y2="22" stroke="#ffffff" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <div class="brand-text-wrap">
+            <span class="brand-title">Build <span class="brand-title-orange">Cost</span></span>
+            <span class="brand-subtitle">CONSTRUCTION COST ESTIMATOR</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#project-details-section" class="nav-link">Project Details</a>
+        <a href="#rates-section" class="nav-link">Materials & Labour</a>
+        <a href="#results-dashboard" class="nav-link">Estimate</a>
+        <a href="#formulas-section" class="nav-link">Formulas</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
+          <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24" stroke-width="1">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+          </svg>
+          <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/>
+            <path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/>
+            <path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+        </button>
+
+        <!-- Calculate Estimate Orange Header Button -->
+        <button id="headerCalcBtn" class="btn-orange-header">
+          <span>Calculate Estimate</span>
+          <span class="calc-bolt-icon">⚡</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Open mobile menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" x2="20" y1="12" y2="12"/>
+            <line x1="4" x2="20" y1="6" y2="6"/>
+            <line x1="4" x2="20" y1="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileNavMenu" class="mobile-nav-menu">
+      <a href="#home" class="mobile-nav-link">Home</a>
+      <a href="#project-details-section" class="mobile-nav-link">Project Details</a>
+      <a href="#rates-section" class="mobile-nav-link">Materials & Labour</a>
+      <a href="#results-dashboard" class="mobile-nav-link">Estimate</a>
+      <a href="#formulas-section" class="mobile-nav-link">Formulas</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper" id="home">
+    <div class="app-container">
+
+      <!-- ================= HERO / INTRO SECTION ================= -->
+      <section class="hero-section">
+        <div class="hero-grid">
+          
+          <!-- Left Column: Headline & Controls -->
+          <div class="hero-left-col">
+            <div class="hero-pill-badge">
+              <span class="hero-pill-icon">📐</span>
+              <span class="hero-pill-text">CIVIL ENGINEERING QUANTITY SURVEYING SUITE</span>
+            </div>
+
+            <h1 class="hero-headline">
+              Estimate Your Construction<br>
+              <span class="hero-headline-orange">Cost With Confidence</span>
+            </h1>
+
+            <p class="hero-subtext">
+              Calculate approximate material quantities, labour expenses, and total construction cost using project dimensions, empirical thumb-rules, and current market rates.
+            </p>
+
+            <div class="hero-buttons-row">
+              <a href="#project-details-section" class="btn-hero-primary" id="btnHeroStart">
+                <span>Start Estimating</span>
+                <span class="arrow-down-icon">↓</span>
+              </a>
+            </div>
+
+            <div class="hero-metrics-row">
+              <div class="hero-metric-item">
+                <span class="hero-metric-title">IS & CPWD</span>
+                <span class="hero-metric-subtitle">QUANTITY NORMS</span>
+              </div>
+              <div class="hero-metric-item">
+                <span class="hero-metric-title">5% Standard</span>
+                <span class="hero-metric-subtitle">SITE WASTAGE FACTOR</span>
+              </div>
+              <div class="hero-metric-item">
+                <span class="hero-metric-title">100% Client-Side</span>
+                <span class="hero-metric-subtitle">INSTANT & OFFLINE READY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Engineering Structural Diagram Card -->
+          <div class="hero-right-col">
+            <div class="hero-blueprint-card">
+              
+              <!-- Floating Overlay Badge 1 (Top Right) -->
+              <div class="hero-floating-badge badge-rate">
+                <div class="badge-icon-orange">₹</div>
+                <div class="badge-content">
+                  <span class="badge-label">ESTIMATED RATE</span>
+                  <span class="badge-value" id="heroBadgeRateVal">-- <span class="badge-unit">/sq.ft</span></span>
+                  <span class="badge-sub" id="heroBadgeRateSub">Enter project rates</span>
+                </div>
+              </div>
+
+              <!-- Floating Overlay Badge 2 (Mid Left) -->
+              <div class="hero-floating-badge badge-steel">
+                <div class="badge-dot-orange"></div>
+                <div class="badge-content">
+                  <span class="badge-label">STEEL REBAR</span>
+                  <span class="badge-value" id="heroBadgeSteelVal">-- kg</span>
+                  <span class="badge-sub" id="heroBadgeSteelSub">Norm: 4 kg/sq.ft</span>
+                </div>
+              </div>
+
+              <!-- Architectural Civil Engineering SVG Diagram -->
+              <svg class="hero-cad-diagram" viewBox="0 0 380 260" fill="none">
+                <!-- Crane Structure -->
+                <path d="M75 220V105M85 220V105M75 105L85 120M85 105L75 120M75 120L85 135M85 120L75 135M75 135L85 150M85 135L75 150M75 150L85 165M85 150L75 165M75 165L85 180M85 165L75 180M75 180L85 195M85 180L75 195M75 195L85 210M85 195L75 210" stroke="#f97316" stroke-width="1.4" opacity="0.85"/>
+                <!-- Crane Jib & Tie Wire -->
+                <path d="M60 105H240L170 85H75Z" stroke="#f97316" stroke-width="1.6" fill="rgba(249, 115, 22, 0.05)"/>
+                <line x1="80" y1="85" x2="220" y2="105" stroke="#f97316" stroke-width="1.2" stroke-dasharray="2 2"/>
+                <line x1="80" y1="85" x2="140" y2="105" stroke="#f97316" stroke-width="1.2"/>
+
+                <!-- Ground / Foundation Plinth -->
+                <rect x="110" y="215" width="220" height="15" rx="3" fill="#1e293b"/>
+                <text x="220" y="226" fill="#94a3b8" font-size="8" font-family="'Inter', sans-serif" font-weight="700" text-anchor="middle" letter-spacing="0.5">RCC FOUNDATION PLINTH</text>
+
+                <!-- Ground Floor Slab & Structure -->
+                <rect x="120" y="165" width="200" height="50" fill="#334155" fill-opacity="0.95"/>
+                <!-- Columns -->
+                <rect x="130" y="165" width="12" height="50" fill="#f97316"/>
+                <rect x="214" y="165" width="12" height="50" fill="#f97316"/>
+                <rect x="298" y="165" width="12" height="50" fill="#f97316"/>
+                <!-- Floor 1 Slab (Orange beam) -->
+                <rect x="115" y="160" width="210" height="8" fill="#f97316"/>
+
+                <!-- First Floor Slab & Structure -->
+                <rect x="120" y="115" width="200" height="45" fill="#475569" fill-opacity="0.95"/>
+                <!-- Columns Floor 2 -->
+                <rect x="130" y="115" width="12" height="45" fill="#ea580c"/>
+                <rect x="214" y="115" width="12" height="45" fill="#ea580c"/>
+                <rect x="298" y="115" width="12" height="45" fill="#ea580c"/>
+                <!-- Roof Slab -->
+                <rect x="115" y="110" width="210" height="8" fill="#f97316"/>
+
+                <!-- Protruding Steel Rebars at Top Slab -->
+                <line x1="133" y1="110" x2="133" y2="88" stroke="#38bdf8" stroke-width="2.2"/>
+                <line x1="138" y1="110" x2="138" y2="92" stroke="#38bdf8" stroke-width="2.2"/>
+                <line x1="217" y1="110" x2="217" y2="88" stroke="#38bdf8" stroke-width="2.2"/>
+                <line x1="222" y1="110" x2="222" y2="92" stroke="#38bdf8" stroke-width="2.2"/>
+                <line x1="301" y1="110" x2="301" y2="88" stroke="#38bdf8" stroke-width="2.2"/>
+                <line x1="306" y1="110" x2="306" y2="92" stroke="#38bdf8" stroke-width="2.2"/>
+
+                <!-- Center Floor Badge (M20 Grade) -->
+                <rect x="195" y="180" width="50" height="16" rx="2" fill="#0f172a" stroke="#ea580c" stroke-width="1"/>
+                <text x="220" y="191" fill="#f97316" font-size="7.5" font-family="'JetBrains Mono', monospace" font-weight="700" text-anchor="middle">M20 GRADE</text>
+
+                <!-- Dimension Lines -->
+                <!-- Bottom Span Dimension -->
+                <line x1="115" y1="242" x2="325" y2="242" stroke="#0284c7" stroke-width="1.2"/>
+                <path d="M115 239L115 245M325 239L325 245" stroke="#0284c7" stroke-width="1.2"/>
+                <path d="M120 242L115 240L115 244ZM320 242L325 240L325 244Z" fill="#0284c7"/>
+                <text x="220" y="252" fill="#0284c7" font-size="8" font-family="'JetBrains Mono', monospace" font-weight="600" text-anchor="middle" id="cadPlotSpan">PLOT SPAN: ENTER DIMENSIONS</text>
+
+                <!-- Right Height Dimension -->
+                <line x1="340" y1="110" x2="340" y2="230" stroke="#0284c7" stroke-width="1.2"/>
+                <path d="M337 110L343 110M337 230L343 230" stroke="#0284c7" stroke-width="1.2"/>
+                <text x="352" y="172" fill="#0284c7" font-size="7.5" font-family="'JetBrains Mono', monospace" font-weight="600" transform="rotate(90 352 172)" text-anchor="middle" id="cadFloorsLabel">RCC STRUCTURE</text>
+              </svg>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= IMPORTANT CIVIL ENGINEERING DISCLAIMER ================= -->
+      <section class="disclaimer-section">
+        <div class="disclaimer-card">
+          <div class="disclaimer-icon-col">
+            <span class="warning-triangle-icon">⚠️</span>
+          </div>
+          <div class="disclaimer-content">
+            <h4 class="disclaimer-title">IMPORTANT CIVIL ENGINEERING DISCLAIMER</h4>
+            <p class="disclaimer-text">
+              Estimates generated by this tool are approximate and intended for preliminary planning only. Actual quantities and costs vary based on structural design, site conditions, specifications, local rates, wastage, labour availability, taxes, transportation and other project-specific factors. Consult a qualified civil engineer/quantity surveyor for final estimation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= INPUT SECTION (TWO CARDS) ================= -->
+      <section class="estimator-inputs-grid" id="project-details-section">
+        
+        <!-- LEFT CARD: Project Details -->
+        <div class="card engineering-card">
+          <div class="card-header">
+            <div class="header-with-icon">
+              <div class="title-icon-box">📐</div>
+              <div>
+                <h2 class="card-title">Project Details</h2>
+                <p class="card-subtitle">Site dimensions and floor specifications</p>
+              </div>
+            </div>
+            <span class="step-badge step-1">STEP 1</span>
+          </div>
+
+          <div class="card-body">
+            <!-- Project Name -->
+            <div class="form-group">
+              <div class="label-with-hint">
+                <label for="projectName" class="form-label">Project Name</label>
+                <span class="form-hint">e.g., Residential Villa</span>
+              </div>
+              <input type="text" id="projectName" class="form-input" value="" placeholder="e.g. Residential Villa">
+            </div>
+
+            <!-- Measurement Unit -->
+            <div class="form-group">
+              <div class="label-with-hint">
+                <label for="measurementUnit" class="form-label">Measurement Unit</label>
+                <span class="form-hint">Standard Units</span>
+              </div>
+              <div class="select-wrapper">
+                <select id="measurementUnit" class="form-select">
+                  <option value="sqft" selected>Feet (ft & sq.ft)</option>
+                  <option value="sqm">Metric System (m & sq.m)</option>
+                </select>
+                <div class="select-arrow">▼</div>
+              </div>
+            </div>
+
+            <!-- Plot Dimensions Row -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="plotLength" class="form-label">Plot Length</label>
+                <div class="input-unit-wrapper">
+                  <input type="number" id="plotLength" class="form-input" value="" placeholder="e.g. 40" min="1" step="0.5">
+                  <span class="unit-badge" id="lengthUnitLabel">FT</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="plotWidth" class="form-label">Plot Width</label>
+                <div class="input-unit-wrapper">
+                  <input type="number" id="plotWidth" class="form-input" value="" placeholder="e.g. 30" min="1" step="0.5">
+                  <span class="unit-badge" id="widthUnitLabel">FT</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Number of Floors & Construction Type -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <div class="label-with-hint">
+                  <label for="numFloors" class="form-label">Number of Floors</label>
+                  <span class="form-hint">1 to 20</span>
+                </div>
+                <div class="input-unit-wrapper">
+                  <input type="number" id="numFloors" class="form-input" value="" placeholder="e.g. 2" min="1" max="20" step="1">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="constructionType" class="form-label">Construction Type</label>
+                <div class="select-wrapper">
+                  <select id="constructionType" class="form-select">
+                    <option value="" disabled selected>Select construction type...</option>
+                    <option value="residential">Residential (G+Structure)</option>
+                    <option value="framed">Residential (RCC Framed)</option>
+                    <option value="commercial">Commercial Building</option>
+                    <option value="industrial">Industrial Shed</option>
+                  </select>
+                  <div class="select-arrow">▼</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Built-up Area Per Floor Calculation -->
+            <div class="form-group">
+              <label class="form-label">Built-up Area Per Floor Calculation</label>
+              <div class="segmented-choice-grid">
+                
+                <div class="choice-card active" id="btnModeAuto" data-mode="auto">
+                  <div class="choice-radio-circle">
+                    <div class="choice-radio-dot"></div>
+                  </div>
+                  <div class="choice-card-content">
+                    <span class="choice-title">Automatic</span>
+                    <span class="choice-desc">From Plot Dimensions</span>
+                  </div>
+                </div>
+
+                <div class="choice-card" id="btnModeManual" data-mode="manual">
+                  <div class="choice-radio-circle">
+                    <div class="choice-radio-dot"></div>
+                  </div>
+                  <div class="choice-card-content">
+                    <span class="choice-title">Manual</span>
+                    <span class="choice-desc">Enter exact area/floor</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Manual Area Input (Initially Hidden) -->
+            <div class="form-group manual-area-group" id="manualAreaGroup" style="display: none;">
+              <label for="manualAreaPerFloor" class="form-label">Exact Built-up Area per Floor</label>
+              <div class="input-unit-wrapper">
+                <input type="number" id="manualAreaPerFloor" class="form-input" value="" placeholder="e.g. 1200" min="1" step="1">
+                <span class="unit-badge" id="manualAreaUnitLabel">sq.ft</span>
+              </div>
+            </div>
+
+            <!-- Dashed Outline Live Footprint & Built-up Area Preview -->
+            <div class="dashed-preview-box">
+              <div class="dashed-preview-item">
+                <span class="dashed-preview-label">Total Plot Footprint:</span>
+                <span class="dashed-preview-val-black" id="previewPlotFootprint">--</span>
+              </div>
+              <div class="dashed-preview-item text-right">
+                <span class="dashed-preview-label">Total Built-up Area:</span>
+                <span class="dashed-preview-val-blue" id="previewBuiltUpArea">--</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT CARD: Material & Labour Rates -->
+        <div class="card engineering-card" id="rates-section">
+          <div class="card-header">
+            <div class="header-with-icon">
+              <div class="title-icon-box">🧱</div>
+              <div>
+                <h2 class="card-title">Material & Labour Rates</h2>
+                <p class="card-subtitle">Prevailing local procurement rates (in ₹)</p>
+              </div>
+            </div>
+            <span class="step-badge step-2">STEP 2</span>
+          </div>
+
+          <div class="card-body">
+            <!-- 5 Material Inputs Grid -->
+            <div class="rates-grid">
+              
+              <!-- Cement -->
+              <div class="form-group rate-item">
+                <label for="rateCement" class="form-label rate-label">
+                  <span class="rate-name"><span class="rate-icon">📄</span> Cement</span>
+                  <span class="rate-subunit">₹ / bag</span>
+                </label>
+                <div class="input-currency-wrapper">
+                  <span class="currency-symbol">₹</span>
+                  <input type="number" id="rateCement" class="form-input currency-input" value="" placeholder="e.g. 420" min="1" step="1">
+                </div>
+              </div>
+
+              <!-- Steel (TMT) -->
+              <div class="form-group rate-item">
+                <label for="rateSteel" class="form-label rate-label">
+                  <span class="rate-name"><span class="rate-icon">⚙</span> Steel (TMT)</span>
+                  <span class="rate-subunit">₹ / kg</span>
+                </label>
+                <div class="input-currency-wrapper">
+                  <span class="currency-symbol">₹</span>
+                  <input type="number" id="rateSteel" class="form-input currency-input" value="" placeholder="e.g. 65" min="1" step="0.5">
+                </div>
+              </div>
+
+              <!-- Sand (Fine) -->
+              <div class="form-group rate-item">
+                <label for="rateSand" class="form-label rate-label">
+                  <span class="rate-name"><span class="rate-icon">⏳</span> Sand (Fine)</span>
+                  <span class="rate-subunit">₹ / cu.ft</span>
+                </label>
+                <div class="input-currency-wrapper">
+                  <span class="currency-symbol">₹</span>
+                  <input type="number" id="rateSand" class="form-input currency-input" value="" placeholder="e.g. 55" min="1" step="1">
+                </div>
+              </div>
+
+              <!-- Aggregate -->
+              <div class="form-group rate-item">
+                <label for="rateAggregate" class="form-label rate-label">
+                  <span class="rate-name"><span class="rate-icon">🪨</span> Aggregate</span>
+                  <span class="rate-subunit">₹ / cu.ft</span>
+                </label>
+                <div class="input-currency-wrapper">
+                  <span class="currency-symbol">₹</span>
+                  <input type="number" id="rateAggregate" class="form-input currency-input" value="" placeholder="e.g. 50" min="1" step="1">
+                </div>
+              </div>
+
+              <!-- Bricks / AAC Blocks -->
+              <div class="form-group rate-item rate-item-full">
+                <label for="rateBricks" class="form-label rate-label">
+                  <span class="rate-name"><span class="rate-icon">🧱</span> Bricks / AAC Blocks</span>
+                  <span class="rate-subunit">₹ / piece</span>
+                </label>
+                <div class="input-currency-wrapper">
+                  <span class="currency-symbol">₹</span>
+                  <input type="number" id="rateBricks" class="form-input currency-input" value="" placeholder="e.g. 10" min="1" step="0.5">
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Labour Cost Calculation Model -->
+            <div class="form-group mt-3">
+              <label class="form-label">Labour Cost Calculation Model</label>
+              <div class="segmented-choice-grid">
+                
+                <div class="choice-card active" id="modelPerAreaCard" data-model="per_area">
+                  <div class="choice-radio-circle">
+                    <div class="choice-radio-dot"></div>
+                  </div>
+                  <div class="choice-card-content">
+                    <span class="choice-title">Per Unit Area</span>
+                    <span class="choice-desc">Fixed ₹ per sq.ft</span>
+                  </div>
+                </div>
+
+                <div class="choice-card" id="modelPercentageCard" data-model="percentage">
+                  <div class="choice-radio-circle">
+                    <div class="choice-radio-dot"></div>
+                  </div>
+                  <div class="choice-card-content">
+                    <span class="choice-title">Percentage Rule</span>
+                    <span class="choice-desc">% of Material Cost</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Dynamic Labour Input -->
+            <div class="form-group" id="labourPerAreaInputWrap">
+              <div class="input-currency-wrapper">
+                <span class="currency-symbol">₹</span>
+                <input type="number" id="labourRatePerSqft" class="form-input currency-input" value="" placeholder="e.g. 250" min="1" step="5">
+                <span class="unit-badge-right">/ sq.ft</span>
+              </div>
+            </div>
+
+            <div class="form-group" id="labourPercentageInputWrap" style="display: none;">
+              <div class="input-unit-wrapper">
+                <input type="number" id="labourPercentage" class="form-input" value="" placeholder="e.g. 35" min="1" max="100" step="0.5">
+                <span class="unit-badge">%</span>
+              </div>
+            </div>
+
+            <!-- Advanced Estimation Settings (Accordion Bar) -->
+            <div class="advanced-settings-accordion">
+              <button type="button" class="advanced-settings-bar" id="accordionTrigger" aria-expanded="false">
+                <span class="settings-bar-label">⚙ Advanced Estimation Settings (Consumption Norms)</span>
+                <span class="settings-bar-arrow">▼</span>
+              </button>
+
+              <div class="advanced-settings-drawer" id="accordionContent">
+                <p class="accordion-notice">
+                  Preliminary IS 456 / CPWD thumb rule consumption norms. Editable for project-specific customization:
+                </p>
+                <div class="norms-grid">
+                  <div class="form-group">
+                    <label class="form-label-xs" for="normCement">Cement Norm</label>
+                    <div class="input-unit-wrapper-xs">
+                      <input type="number" id="normCement" class="form-input form-input-xs" value="0.4" step="0.01">
+                      <span class="unit-badge-xs">bags/sq.ft</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label-xs" for="normSteel">Steel Norm</label>
+                    <div class="input-unit-wrapper-xs">
+                      <input type="number" id="normSteel" class="form-input form-input-xs" value="4.0" step="0.1">
+                      <span class="unit-badge-xs">kg/sq.ft</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label-xs" for="normSand">Sand Norm</label>
+                    <div class="input-unit-wrapper-xs">
+                      <input type="number" id="normSand" class="form-input form-input-xs" value="1.5" step="0.05">
+                      <span class="unit-badge-xs">cu.ft/sq.ft</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label-xs" for="normAggregate">Aggregate Norm</label>
+                    <div class="input-unit-wrapper-xs">
+                      <input type="number" id="normAggregate" class="form-input form-input-xs" value="1.0" step="0.05">
+                      <span class="unit-badge-xs">cu.ft/sq.ft</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label-xs" for="normBricks">Bricks Norm</label>
+                    <div class="input-unit-wrapper-xs">
+                      <input type="number" id="normBricks" class="form-input form-input-xs" value="8.0" step="0.5">
+                      <span class="unit-badge-xs">pcs/sq.ft</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label-xs" for="siteWastage">Site Wastage</label>
+                    <div class="input-unit-wrapper-xs">
+                      <input type="number" id="siteWastage" class="form-input form-input-xs" value="5.0" step="0.5">
+                      <span class="unit-badge-xs">%</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="norms-footer">
+                  <button type="button" id="btnResetNorms" class="btn-text-link">Reset to Standard IS Norms</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================= VALIDATION BANNER ================= -->
+      <div id="validationNotice" class="validation-notice" style="display: none;">
+        <span class="validation-icon">⚠️</span>
+        <span id="validationMessage" class="validation-text">Please enter plot dimensions, select construction type, and enter material & labour rates to calculate.</span>
+      </div>
+
+      <!-- ================= CENTERED BUTTONS ROW ================= -->
+      <section class="buttons-row-section">
+        <button type="button" id="btnCalculateMain" class="btn-action-primary">
+          <span>Calculate Estimate</span>
+          <span>🚀</span>
+        </button>
+
+        <button type="button" id="btnResetAll" class="btn-action-reset">
+          <span>Reset Estimate</span>
+          <span>↺</span>
+        </button>
+      </section>
+
+      <!-- ================= RESULTS DASHBOARD CONTAINER ================= -->
+      <div id="resultsWrapper" class="results-container">
+        
+        <!-- Empty State Guidance Card (visible when not yet calculated) -->
+        <div id="emptyStateGuidanceCard" class="empty-state-guidance-card">
+          <div class="empty-guidance-icon-box">📋</div>
+          <div class="empty-guidance-content">
+            <h3 class="empty-guidance-title">No Estimate Calculated Yet</h3>
+            <p class="empty-guidance-desc">Enter your project dimensions, select the construction type, and specify prevailing local material & labour rates above, then click <strong>Calculate Estimate</strong> to generate your Bill of Quantities, cost breakdown charts, and engineering cost analysis.</p>
+          </div>
+        </div>
+
+        <!-- Results Dashboard Header -->
+        <section class="dashboard-centered-header" id="results-dashboard">
+          <div class="dashboard-badge">PRELIMINARY BILL OF QUANTITIES</div>
+          <h2 class="dashboard-main-title">Estimation Results Dashboard</h2>
+          <p class="dashboard-subtitle">
+            Itemized material takeoff and comprehensive cost analysis based on current site parameters.
+          </p>
+        </section>
+
+        <!-- 5 HORIZONTAL SUMMARY CARDS -->
+        <section class="summary-cards-section">
+          <div class="summary-cards-grid">
+            
+            <!-- Card 1: Built-up Area -->
+            <div class="summary-metric-card">
+              <div class="metric-top-bar bar-blue"></div>
+              <div class="metric-body">
+                <div class="metric-header-row">
+                  <span class="metric-label">BUILT-UP AREA</span>
+                  <span class="metric-icon-small">📐</span>
+                </div>
+                <div class="metric-number" id="dashBuiltUpArea">--</div>
+                <div class="metric-subtext" id="dashBuiltUpSubtext">Enter plot dimensions above</div>
+              </div>
+            </div>
+
+            <!-- Card 2: Material Cost -->
+            <div class="summary-metric-card">
+              <div class="metric-top-bar bar-slate"></div>
+              <div class="metric-body">
+                <div class="metric-header-row">
+                  <span class="metric-label">MATERIAL COST</span>
+                  <span class="metric-icon-small">🧱</span>
+                </div>
+                <div class="metric-number" id="dashMaterialCost">₹--</div>
+                <div class="metric-subtext" id="dashMaterialSubtext">Awaiting material rates</div>
+              </div>
+            </div>
+
+            <!-- Card 3: Labour Cost -->
+            <div class="summary-metric-card">
+              <div class="metric-top-bar bar-slate"></div>
+              <div class="metric-body">
+                <div class="metric-header-row">
+                  <span class="metric-label">LABOUR COST</span>
+                  <span class="metric-icon-small">👷</span>
+                </div>
+                <div class="metric-number" id="dashLabourCost">₹--</div>
+                <div class="metric-subtext" id="dashLabourSubtext">Awaiting labour parameters</div>
+              </div>
+            </div>
+
+            <!-- Card 4: Total Estimated Cost -->
+            <div class="summary-metric-card">
+              <div class="metric-top-bar bar-orange"></div>
+              <div class="metric-body">
+                <div class="metric-header-row">
+                  <span class="metric-label">TOTAL ESTIMATED COST</span>
+                  <span class="metric-icon-small">💰</span>
+                </div>
+                <div class="metric-number color-orange" id="dashTotalCost">₹--</div>
+                <div class="metric-subtext">Civil Structure + Labour (Excl. Finish)</div>
+              </div>
+            </div>
+
+            <!-- Card 5: Cost / Sq.Ft -->
+            <div class="summary-metric-card">
+              <div class="metric-top-bar bar-green"></div>
+              <div class="metric-body">
+                <div class="metric-header-row">
+                  <span class="metric-label">COST / SQ.FT</span>
+                  <span class="metric-icon-small">📊</span>
+                </div>
+                <div class="metric-number color-green" id="dashCostPerSqft">₹--</div>
+                <div class="metric-subtext" id="dashCostPerSqm">-- / sq.m</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================= MATERIAL TAKEOFF TABLE ================= -->
+        <section class="takeoff-table-section">
+          <div class="card engineering-card table-outer-card">
+            
+            <div class="card-header table-card-header">
+              <div class="header-with-icon">
+                <div class="title-icon-box">📋</div>
+                <div>
+                  <h3 class="card-title">Estimated Material Requirements & Takeoff</h3>
+                  <p class="card-subtitle">Detailed Bill of Quantities (BOQ) with wastage allowance</p>
+                </div>
+              </div>
+              <div class="takeoff-verified-badge" id="takeoffBadge">
+                AWAITING CALCULATION
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="boq-table">
+                <thead>
+                  <tr>
+                    <th>MATERIAL CATEGORY</th>
+                    <th class="text-right">ESTIMATED QUANTITY</th>
+                    <th>UNIT</th>
+                    <th class="text-right">PROCUREMENT RATE</th>
+                    <th class="text-center">SITE WASTAGE</th>
+                    <th class="text-right">ESTIMATED COST (₹)</th>
+                  </tr>
+                </thead>
+                <tbody id="materialTableBody">
+                  <tr id="tableEmptyRow" class="table-empty-row">
+                    <td colspan="6">
+                      <div class="empty-table-prompt">
+                        <span class="empty-table-icon">🏗️</span>
+                        <p>No material takeoff generated yet.</p>
+                        <span class="empty-table-sub">Fill in dimensions and material procurement rates above, then click Calculate Estimate to compute required quantities.</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr class="table-total-row">
+                    <td colspan="5" class="total-label-cell">
+                      TOTAL ESTIMATED MATERIAL COST:
+                    </td>
+                    <td class="text-right font-mono font-bold total-cost-cell" id="tableTotalMaterialCost">
+                      ₹--
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================= CHART SECTION (2 COLUMNS) ================= -->
+        <section class="charts-section">
+          <div class="charts-grid">
+            
+            <!-- LEFT CHART: Cost Contribution Breakdown -->
+            <div class="card engineering-card chart-card">
+              <div class="card-header chart-card-header">
+                <div class="header-with-icon">
+                  <div class="title-icon-box">🍩</div>
+                  <div>
+                    <h3 class="card-title">Cost Contribution Breakdown</h3>
+                    <p class="card-subtitle">Percentage share of each trade & material</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body chart-body">
+                <div class="chart-wrapper">
+                  <div id="chartPlaceholder1" class="chart-empty-state">
+                    <span class="empty-chart-icon">🍩</span>
+                    <p class="empty-chart-title">No Breakdown Data</p>
+                    <p class="empty-chart-sub">Calculate estimate to view trade percentage share.</p>
+                  </div>
+                  <canvas id="costBreakdownChart" style="display: none;"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT CHART: Expense Comparison by Category -->
+            <div class="card engineering-card chart-card">
+              <div class="card-header chart-card-header">
+                <div class="header-with-icon">
+                  <div class="title-icon-box">📊</div>
+                  <div>
+                    <h3 class="card-title">Expense Comparison by Category</h3>
+                    <p class="card-subtitle">Direct monetary expenditure (in ₹)</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body chart-body">
+                <div class="chart-wrapper">
+                  <div id="chartPlaceholder2" class="chart-empty-state">
+                    <span class="empty-chart-icon">📊</span>
+                    <p class="empty-chart-title">No Expenditure Data</p>
+                    <p class="empty-chart-sub">Calculate estimate to view category cost comparison.</p>
+                  </div>
+                  <canvas id="expenseComparisonChart" style="display: none;"></canvas>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================= SUMMARY & FORMULAS (2 COLUMNS) ================= -->
+        <section class="summary-formulas-section" id="formulas-section">
+          <div class="summary-formulas-grid">
+            
+            <!-- LEFT CARD: Project Cost Summary -->
+            <div class="card engineering-card">
+              <div class="card-header">
+                <div class="header-with-icon">
+                  <div class="title-icon-box">📄</div>
+                  <div>
+                    <h3 class="card-title">Project Cost Summary</h3>
+                    <p class="card-subtitle">Consolidated executive overview</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-body">
+                <div class="overview-list">
+                  
+                  <div class="overview-row">
+                    <span class="overview-key">Project Title:</span>
+                    <span class="overview-val font-semibold" id="sumProjectTitle">--</span>
+                  </div>
+
+                  <div class="overview-row">
+                    <span class="overview-key">Plot Footprint:</span>
+                    <span class="overview-val font-mono" id="sumPlotFootprint">--</span>
+                  </div>
+
+                  <div class="overview-row">
+                    <span class="overview-key">Total Built-up Area:</span>
+                    <span class="overview-val font-mono" id="sumBuiltUpArea">--</span>
+                  </div>
+
+                  <div class="overview-row">
+                    <span class="overview-key">Total Material Expenditure:</span>
+                    <span class="overview-val font-mono font-bold" id="sumMaterialCost">₹--</span>
+                  </div>
+
+                  <div class="overview-row">
+                    <span class="overview-key">Total Labour Expenditure:</span>
+                    <span class="overview-val font-mono font-bold" id="sumLabourCost">₹--</span>
+                  </div>
+
+                  <div class="overview-row">
+                    <span class="overview-key">Estimated Cost per Square Foot:</span>
+                    <span class="overview-val font-mono font-bold" id="sumCostPerSqft">₹--</span>
+                  </div>
+
+                  <div class="overview-row">
+                    <span class="overview-key">Estimated Cost per Square Meter:</span>
+                    <span class="overview-val font-mono font-bold" id="sumCostPerSqm">₹--</span>
+                  </div>
+
+                  <!-- ESTIMATED TOTAL BUDGET ROW -->
+                  <div class="overview-row total-budget-row">
+                    <span class="budget-label-orange">ESTIMATED TOTAL BUDGET:</span>
+                    <span class="budget-val-orange" id="sumGrandBudget">₹--</span>
+                  </div>
+
+                </div>
+
+                <!-- Generate Official Estimate Report Button -->
+                <div class="report-btn-wrap">
+                  <button type="button" id="btnReportPrintBottom" class="btn-generate-report">
+                    <span>Generate Official Estimate Report</span>
+                    <span>🖨️</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- RIGHT CARD: How Was This Estimate Calculated? -->
+            <div class="card engineering-card">
+              <div class="card-header">
+                <div class="header-with-icon">
+                  <div class="title-icon-box">🎓</div>
+                  <div>
+                    <h3 class="card-title">How Was This Estimate Calculated?</h3>
+                    <p class="card-subtitle">Transparent Civil Engineering quantity formulas</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-body">
+                <div class="formula-cards-stack">
+                  
+                  <!-- Formula 1 -->
+                  <div class="formula-card-item">
+                    <div class="formula-top-header">
+                      <span class="formula-card-title">1. Total Built-up Area Calculation</span>
+                      <span class="formula-tag tag-blue">📐 GEOMETRY</span>
+                    </div>
+                    <div class="formula-subline">Plot Length × Plot Width × Number of Floors</div>
+                    <div class="formula-output-box" id="formulaBox1">
+                      Enter plot dimensions above to calculate built-up area
+                    </div>
+                  </div>
+
+                  <!-- Formula 2 -->
+                  <div class="formula-card-item">
+                    <div class="formula-top-header">
+                      <span class="formula-card-title">2. Cement Requirement (Thumb Rule + Wastage)</span>
+                      <span class="formula-tag tag-orange">🧱 MATERIALS</span>
+                    </div>
+                    <div class="formula-subline" id="formulaRule2">Built-up Area × 0.4 bags/sq.ft × (1 + 5% wastage)</div>
+                    <div class="formula-output-box" id="formulaBox2">
+                      Enter dimensions and cement procurement rate to calculate
+                    </div>
+                  </div>
+
+                  <!-- Formula 3 -->
+                  <div class="formula-card-item">
+                    <div class="formula-top-header">
+                      <span class="formula-card-title">3. Steel Reinforcement (TMT Rebars)</span>
+                      <span class="formula-tag tag-orange">⚙ MATERIALS</span>
+                    </div>
+                    <div class="formula-subline" id="formulaRule3">Built-up Area × 4 kg/sq.ft × (1 + 5% wastage)</div>
+                    <div class="formula-output-box" id="formulaBox3">
+                      Enter dimensions and steel procurement rate to calculate
+                    </div>
+                  </div>
+
+                  <!-- Formula 4 -->
+                  <div class="formula-card-item">
+                    <div class="formula-top-header">
+                      <span class="formula-card-title">4. Labour Cost Computation</span>
+                      <span class="formula-tag tag-blue">👷 MANPOWER</span>
+                    </div>
+                    <div class="formula-subline" id="formulaRule4">Rate Rule: Built-up Area × Labour Rate</div>
+                    <div class="formula-output-box" id="formulaBox4">
+                      Enter labour rate or percentage to calculate
+                    </div>
+                  </div>
+
+                  <!-- Formula 5 -->
+                  <div class="formula-card-item formula-card-grand">
+                    <div class="formula-top-header">
+                      <span class="formula-card-title">5. Grand Construction Cost & Unit Rates</span>
+                      <span class="formula-tag tag-green">🏆 TOTAL BOQ</span>
+                    </div>
+                    <div class="formula-subline">Total Cost = Total Material Cost + Labour Cost | Unit Rate = Total Cost ÷ Total Area</div>
+                    <div class="formula-output-box" id="formulaBox5">
+                      Total Material Cost + Labour Cost = Grand Budget
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div> <!-- /resultsWrapper -->
+
+    </div>
+  </main>
+
+  <!-- ================= ENGINEERING FOOTER ================= -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      
+      <div class="footer-grid">
+        
+        <!-- Column 1: Brand & Academic Description -->
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand-wrap">
+            <div class="brand-logo-box footer-brand-logo">
+              <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+                <rect width="28" height="28" rx="4" fill="#0f172a"/>
+                <path d="M14 4L4 22H24L14 4Z" stroke="#f97316" stroke-width="2.4" stroke-linejoin="round"/>
+                <line x1="8" y1="15" x2="20" y2="15" stroke="#f97316" stroke-width="2"/>
+                <line x1="14" y1="4" x2="14" y2="22" stroke="#f97316" stroke-width="2"/>
+                <line x1="8" y1="15" x2="14" y2="22" stroke="#ffffff" stroke-width="1.6"/>
+                <line x1="20" y1="15" x2="14" y2="22" stroke="#ffffff" stroke-width="1.6"/>
+              </svg>
+            </div>
+            <div class="brand-text-wrap">
+              <span class="footer-brand-title">Build <span class="brand-title-orange">Cost</span></span>
+              <span class="footer-brand-subtitle">CONSTRUCTION COST ESTIMATOR</span>
+            </div>
+          </div>
+          <p class="footer-description">
+            A specialized quantity surveying and preliminary budgeting application designed for Civil Engineers, project estimators, and builders to compute material requirements and cost forecasts.
+          </p>
+          <p class="footer-tech-note">
+            Built with semantic HTML5, modern CSS3, and Vanilla JavaScript (ES6+).
+          </p>
+        </div>
+
+        <!-- Column 2: Navigation Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">NAVIGATION</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#project-details-section">Project Details</a></li>
+            <li><a href="#rates-section">Material Rates</a></li>
+            <li><a href="#results-dashboard">Results Dashboard</a></li>
+            <li><a href="#formulas-section">Engineering Formulas</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Engineering Reference Codes -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">ENGINEERING REFERENCE</h4>
+          <ul class="footer-codes-list">
+            <li>IS 456:2000 Plain & RCC Code</li>
+            <li>IS 1200 Method of Measurement</li>
+            <li>CPWD Delhi Schedule of Rates (DSR)</li>
+            <li>SP 16 Design Aids for R.C.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Copyright & Attribution Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy-text">
+          © BuildCost — Construction Cost Estimator. Accurate Preliminary Estimation Suite.
+        </div>
+        <div class="footer-open-source-tag">
+          GitHub Pages Static Web App · Free & Open Source
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
